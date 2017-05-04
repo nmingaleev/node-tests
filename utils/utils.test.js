@@ -1,4 +1,5 @@
 const expect = require('expect'); // asserion library
+const express = require('express');
 
 const utils = require('./utils.js');
 
