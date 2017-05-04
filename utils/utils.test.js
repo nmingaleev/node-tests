@@ -3,25 +3,29 @@ const express = require('express');
 
 const utils = require('./utils.js');
 
-it('should add two numbers', () => {
-  var res = utils.add(33, 11);
+describe('Utils', () => {
+  it('should add two numbers', () => {
+    var res = utils.add(33, 11);
 
-  expect(res).toBe(44).toBeA('number');
-});
+    expect(res).toBe(44).toBeA('number');
+  });
 
-it('should square a number', (done) => {
-  utils.square(3, (res) => {
-    expect(res).toBe(9);
-    done();
+  it('should square a number', (done) => {
+    utils.square(3, (res) => {
+      expect(res).toBe(9);
+      done();
+    });
+  });
+
+  it('should async add two numbers', (done) => { //для ассинхронных тестов
+    utils.asyncAdd(4, 3, (sum) => {
+      expect(sum).toBe(7).toBeA('number');
+      done();
+    });
   });
 });
 
-it('should async add two numbers', (done) => { //для ассинхронных тестов
-  utils.asyncAdd(4, 3, (sum) => {
-    expect(sum).toBe(7).toBeA('number');
-    done();
-  });
-});
+
 
 // it('should expect some values', () => {
 //   // expect(12).toNotBe(11);
